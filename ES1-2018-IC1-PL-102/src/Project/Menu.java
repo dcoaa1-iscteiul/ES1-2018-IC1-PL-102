@@ -118,7 +118,7 @@ public class Menu extends JFrame {
 		lblToken.setBounds(55, 76, 56, 14);
 		LoginPanel.add(lblToken);
 		
-		
+		 
 	}
 	
 	
