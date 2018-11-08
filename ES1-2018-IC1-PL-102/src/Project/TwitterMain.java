@@ -15,10 +15,10 @@ public final class TwitterMain  {
         try {
         	ConfigurationBuilder cb = new ConfigurationBuilder();
         	cb.setDebugEnabled(true)
-        	  .setOAuthConsumerKey("W1f0VvgWPfT8OBqVxvy4Mw")
-        	  .setOAuthConsumerSecret("zKH2yAtRyefwsgOO8h8Szc4kru68iEm95QmIG7svw")
-        	  .setOAuthAccessToken("36481851-VhzByC4f9MSsZES1QZQ4e4iBvA9bWGLyv9HKFpy7c")
-        	  .setOAuthAccessTokenSecret("OahDuXF2Lhl5xlNYALhYZir6xSflAxKP9Zh89T05po");
+        	  .setOAuthConsumerKey("m47BhNIxXyzqBLD9zDEbivGOG")
+        	  .setOAuthConsumerSecret("h0gtAwWXzVaTb9YltZVMXJy8md3MPKNSPGVYg3xbU9aWaKtdM5")
+        	  .setOAuthAccessToken("1055232838059077632-lIAQzn5Gvhj3H7Ox4hH4FHxn1vQYCP")
+        	  .setOAuthAccessTokenSecret("p6aES0HNDcJOCPxjtkJzS6gT2E0ZKy2uKQT82uVP8JrEE");
         	TwitterFactory tf = new TwitterFactory(cb.build());
         	Twitter twitter = tf.getInstance();        		
             List<Status> statuses = twitter.getHomeTimeline();
@@ -27,7 +27,7 @@ public final class TwitterMain  {
     		int counterTotal = 0;
             for (Status status : statuses) {
 				// Filters only tweets from user "catarina"
-				if (status.getUser().getName() != null && status.getUser().getName().contains("catarina")) {
+				if (status.getUser().getName() != null && status.getUser().getName().contains("Dia")) {
 					System.out.println(status.getUser().getName() + ":" + status.getText());
 					counter++;
 				}
