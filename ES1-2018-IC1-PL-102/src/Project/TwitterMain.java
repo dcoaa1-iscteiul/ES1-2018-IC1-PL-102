@@ -2,6 +2,8 @@ package Project;
 
 
 import java.util.List;
+
+import Send.Retweet;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
@@ -26,14 +28,17 @@ public final class TwitterMain  {
     		int counter=0;
     		int counterTotal = 0;
             for (Status status : statuses) {
-				// Filters only tweets from user "catarina"
-				if (status.getUser().getName() != null && status.getUser().getName().contains("Dia")) {
+				if (status.getUser().getName() != null && status.getUser().getName().contains("ISCTE")) {
 					System.out.println(status.getUser().getName() + ":" + status.getText());
 					counter++;
 				}
 				counterTotal++;
             }
     		System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
+    		
+    		//enviar a lista pro retweet
+//            Retweet.retweet();
+            
         } catch (Exception e) { System.out.println(e.getMessage()); }
      }
 }
