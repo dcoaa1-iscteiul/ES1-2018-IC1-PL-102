@@ -34,7 +34,9 @@ public class Login extends JFrame {
 				try {
 					Login frame = new Login();
 					frame.setVisible(true);
-					//frame.pack();
+					Dimension dimensao = new Dimension(250,330);
+					frame.setPreferredSize(dimensao);
+					frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,7 +49,6 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 250, 329);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,7 +56,6 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setToolTipText("Password");
 		textField.setBounds(53, 202, 120, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
@@ -76,7 +76,6 @@ public class Login extends JFrame {
 		contentPane.add(txtpnPassword);
 		
 		textField_1 = new JTextField();
-		textField_1.setToolTipText("Username");
 		textField_1.setForeground(new Color(0, 0, 0));
 		textField_1.setColumns(10);
 		textField_1.setBounds(53, 149, 120, 20);
