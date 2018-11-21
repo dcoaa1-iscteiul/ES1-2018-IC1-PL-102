@@ -37,6 +37,7 @@ public class Login extends JFrame {
 					Dimension dimensao = new Dimension(250,330);
 					frame.setPreferredSize(dimensao);
 					frame.pack();
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
