@@ -38,6 +38,7 @@ public class MenuPrincipal extends JFrame {
 					frame.setPreferredSize(dimensao);
 					frame.pack();
 					frame.setResizable(false);
+					frame.setTitle("Menu Principal");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
