@@ -18,12 +18,13 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.DropMode;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -55,11 +56,6 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(53, 202, 120, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("LOGIN");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -96,5 +92,9 @@ public class Login extends JFrame {
 		txtpnUsername.setBackground(Color.WHITE);
 		txtpnUsername.setBounds(81, 129, 105, 20);
 		contentPane.add(txtpnUsername);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(53, 203, 120, 20);
+		contentPane.add(passwordField);
 	}
 }

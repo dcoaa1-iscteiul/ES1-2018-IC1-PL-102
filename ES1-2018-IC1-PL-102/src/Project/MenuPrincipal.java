@@ -37,6 +37,7 @@ public class MenuPrincipal extends JFrame {
 					Dimension dimensao = new Dimension(450,400);
 					frame.setPreferredSize(dimensao);
 					frame.pack();
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -135,7 +136,7 @@ public class MenuPrincipal extends JFrame {
 		contentPane.add(emailLabel);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(174, 292, 89, 23);
+		btnOk.setBounds(174, 324, 89, 23);
 		contentPane.add(btnOk);
 		
 		JTextPane txtpnBemVindo = new JTextPane();
