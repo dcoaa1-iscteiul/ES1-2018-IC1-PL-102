@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.DropMode;
 import javax.swing.JPasswordField;
@@ -23,8 +25,9 @@ import javax.swing.JPasswordField;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
+	private JTextField username;
 	private JPasswordField passwordField;
+	private JTextPane txtpnUsername;
 
 	/**
 	 * Launch the application.
@@ -60,6 +63,9 @@ public class Login extends JFrame {
 		JButton btnNewButton = new JButton("LOGIN");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				System.out.println(getUsername());
+				System.out.println(getPassword());
 			}
 		});
 		btnNewButton.setBounds(53, 231, 120, 37);
@@ -72,11 +78,11 @@ public class Login extends JFrame {
 		txtpnPassword.setBounds(81, 183, 60, 20);
 		contentPane.add(txtpnPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setForeground(new Color(0, 0, 0));
-		textField_1.setColumns(10);
-		textField_1.setBounds(53, 149, 120, 20);
-		contentPane.add(textField_1);
+		username = new JTextField();
+		username.setForeground(new Color(0, 0, 0));
+		username.setColumns(10);
+		username.setBounds(53, 149, 120, 20);
+		contentPane.add(username);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,7 +92,7 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(0, 0, 234, 126);
 		contentPane.add(lblNewLabel);
 		
-		JTextPane txtpnUsername = new JTextPane();
+		txtpnUsername = new JTextPane();
 		txtpnUsername.setText("Username");
 		txtpnUsername.setEditable(false);
 		txtpnUsername.setBackground(Color.WHITE);
@@ -96,5 +102,31 @@ public class Login extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(53, 203, 120, 20);
 		contentPane.add(passwordField);
+		
+		try {
+			authenticate();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+	public void authenticate() throws IOException {
+		
+		//while(!interrupted()) {
+		if (getUsername().equals("h") && getPassword().equals("h")) { //não irá ser assim pois terá que funcionar com ficheiro XML
+		    System.out.println("Login successful");
+		} else {
+		    System.out.println("login failed");
+		}		
+}
+	
+	public String getUsername(){
+		return username.getText();
+	}
+	
+	public String getPassword(){
+		return passwordField.getText();
+	}
+
 }
