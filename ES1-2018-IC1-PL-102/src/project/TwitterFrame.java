@@ -1,10 +1,11 @@
-package Project;
+package project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 
@@ -21,7 +22,7 @@ import javax.swing.JButton;
 public class TwitterFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	public JTextField textField;
 	private JButton button;
 
 	/**
@@ -83,6 +84,14 @@ public class TwitterFrame extends JFrame {
 		JButton btnNewButton = new JButton("GO");
 		btnNewButton.setBounds(164, 172, 55, 33);
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				startSearch();
+
+			}
+		});
+		
+		startSearch();
 		
 		JButton btnRetweet = new JButton("RETWEET");
 		btnRetweet.setBounds(102, 216, 117, 33);
@@ -94,6 +103,12 @@ public class TwitterFrame extends JFrame {
 		contentPane.add(backButton);
 		backButton.setText("BACK");
 		backButton.setIcon(new ImageIcon("backarrow.png"));
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg1) {
+				closeFrame();
+
+			}
+		});
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(164, 11, 260, 150);
@@ -104,6 +119,26 @@ public class TwitterFrame extends JFrame {
 		list.setBackground(Color.WHITE);
 		list.setForeground(Color.BLACK);
 		panel.add(list);
-
+		
+		
+		
 	}
+	
+	public void startSearch() {
+		
+		if(getText().contains("123"))
+			System.out.println(getText());
+		
+	}
+	
+	public void closeFrame(){
+	    super.dispose();
+	}
+	
+	public String getText() {
+		return textField.getText();
+	}
+	
+	
+
 }

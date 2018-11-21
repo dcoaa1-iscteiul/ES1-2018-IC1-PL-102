@@ -1,4 +1,4 @@
-package Project;
+package project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -85,8 +85,10 @@ public class EmailFrame extends JFrame {
 		JButton btnRetweet = new JButton("ENVIAR");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				closeFrame();
 			}
 		});
+		
 		btnRetweet.setBounds(102, 216, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
@@ -96,6 +98,12 @@ public class EmailFrame extends JFrame {
 		contentPane.add(backButton);
 		backButton.setText("BACK");
 		//backButton.setIcon(new ImageIcon("backarrow.png"));
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg1) {
+				closeFrame();
+
+			}
+		});
 
 		JPanel panel = new JPanel();
 		panel.setBounds(164, 11, 260, 150);
@@ -107,5 +115,9 @@ public class EmailFrame extends JFrame {
 		list.setForeground(Color.BLACK);
 		panel.add(list);
 
+	}
+	
+	public void closeFrame(){
+	    super.dispose();
 	}
 }

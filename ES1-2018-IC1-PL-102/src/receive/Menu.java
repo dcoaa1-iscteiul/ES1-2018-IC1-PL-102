@@ -1,4 +1,4 @@
-package Receive;
+package receive;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

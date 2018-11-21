@@ -1,8 +1,11 @@
-package Project;
+package project;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,13 +20,15 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 
 public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
-
+	private JFrame frame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -32,7 +37,6 @@ public class MenuPrincipal extends JFrame {
 			public void run() {
 				try {
 					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
 					frame.setVisible(true);
 					Dimension dimensao = new Dimension(450,400);
 					frame.setPreferredSize(dimensao);
@@ -57,20 +61,25 @@ public class MenuPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setBackground(Color.WHITE);
-		chckbxNewCheckBox.setBounds(68, 256, 21, 23);
-		contentPane.add(chckbxNewCheckBox);
 
-		JCheckBox checkBox = new JCheckBox("");
-		checkBox.setBackground(Color.WHITE);
-		checkBox.setBounds(209, 256, 21, 23);
-		contentPane.add(checkBox);
+		//////////////////////////CHECKBOXES
+		JCheckBox faceCheckBox = new JCheckBox("");
+		faceCheckBox.setBackground(Color.WHITE);
+		faceCheckBox.setBounds(68, 256, 21, 23);
+		contentPane.add(faceCheckBox);
 
-		JCheckBox checkBox_1 = new JCheckBox("");
-		checkBox_1.setBackground(Color.WHITE);
-		checkBox_1.setBounds(351, 256, 21, 23);
-		contentPane.add(checkBox_1);
+		JCheckBox twitterCheckBox = new JCheckBox("");
+		twitterCheckBox.setBackground(Color.WHITE);
+		twitterCheckBox.setBounds(209, 256, 21, 23);
+		contentPane.add(twitterCheckBox);
+
+		JCheckBox emailCheckBox = new JCheckBox("");
+		emailCheckBox.setBackground(Color.WHITE);
+		emailCheckBox.setBounds(351, 256, 21, 23);
+		contentPane.add(emailCheckBox);
+
+
+
 
 		JTextPane txtpnAsdasd = new JTextPane();
 		txtpnAsdasd.setEditable(false);
@@ -92,6 +101,7 @@ public class MenuPrincipal extends JFrame {
 		txtpnEmail.setText("E-MAIL");
 		txtpnEmail.setBounds(341, 226, 60, 23);
 		contentPane.add(txtpnEmail);
+
 
 		//////////FOTO FACEBOOK
 		JLabel faceLabel = new JLabel("");
@@ -135,11 +145,37 @@ public class MenuPrincipal extends JFrame {
 
 		emailLabel.setIcon(newLogoEmail);
 		contentPane.add(emailLabel);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(174, 324, 89, 23);
 		contentPane.add(btnOk);
-		
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				if(faceCheckBox.isSelected() && !twitterCheckBox.isSelected() && !emailCheckBox.isSelected()) {
+					FacebookFrame fFrame = new FacebookFrame();
+					fFrame.setVisible(true);
+					//frame.setVisible(false);
+				} else if(!faceCheckBox.isSelected() && twitterCheckBox.isSelected() && !emailCheckBox.isSelected()) {
+					TwitterFrame tFrame;
+					try {
+						tFrame = new TwitterFrame();
+						tFrame.setVisible(true);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if (!faceCheckBox.isSelected() && !twitterCheckBox.isSelected() && emailCheckBox.isSelected()) {
+					EmailFrame eFrame = new EmailFrame();
+					eFrame.setVisible(true);
+				} else if (!faceCheckBox.isSelected() && !twitterCheckBox.isSelected() && !emailCheckBox.isSelected()) {
+					JOptionPane.showMessageDialog(frame, "Escolha uma opção válida!");
+				}
+				else
+					JOptionPane.showMessageDialog(frame, "Escolha apenas um!");
+			}
+		});
+
+
 		JTextPane txtpnBemVindo = new JTextPane();
 		txtpnBemVindo.setFont(new Font("Segoe UI Semibold", Font.BOLD, 29));
 		txtpnBemVindo.setText("BEM VINDO, + USERNAME");
@@ -147,6 +183,8 @@ public class MenuPrincipal extends JFrame {
 		txtpnBemVindo.setBackground(Color.WHITE);
 		txtpnBemVindo.setBounds(128, 11, 222, 81);
 		contentPane.add(txtpnBemVindo);
+
+
 
 	}
 }

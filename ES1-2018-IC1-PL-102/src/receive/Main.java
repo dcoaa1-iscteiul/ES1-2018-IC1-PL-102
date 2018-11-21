@@ -1,4 +1,4 @@
-package Receive;
+package receive;
 
 public class Main {
 

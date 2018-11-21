@@ -1,8 +1,8 @@
-package Send;
+package send;
 
 import java.util.List;
 
-import Receive.TwitterMain;
+import project.TwitterMain;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
