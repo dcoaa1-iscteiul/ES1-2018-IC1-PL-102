@@ -69,10 +69,10 @@ public class TwitterMain extends Thread  {
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-		.setOAuthConsumerKey("m47BhNIxXyzqBLD9zDEbivGOG")
-		.setOAuthConsumerSecret("h0gtAwWXzVaTb9YltZVMXJy8md3MPKNSPGVYg3xbU9aWaKtdM5")
-		.setOAuthAccessToken("1055232838059077632-lIAQzn5Gvhj3H7Ox4hH4FHxn1vQYCP")
-		.setOAuthAccessTokenSecret("p6aES0HNDcJOCPxjtkJzS6gT2E0ZKy2uKQT82uVP8JrEE");
+		.setOAuthConsumerKey("gSs8YTJ2uMDSdBHImPqxbEHxA")
+		.setOAuthConsumerSecret("SUPKAPtB9wNc0r6qlixXHxgthWt9LR66KccA02j9CMSu166jCF")
+		.setOAuthAccessToken("1055232838059077632-aQRtKqJfuvhUyF9Nr7O5YdWExQCFsL")
+		.setOAuthAccessTokenSecret("FIlIGoPWqPwV3qKgpKohI16Pw91mQTtLj0aTSLYD2qo0n");
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		twitter = tf.getInstance();        		
 	}
@@ -85,10 +85,10 @@ public class TwitterMain extends Thread  {
 			try {
 				ConfigurationBuilder cb = new ConfigurationBuilder();
 				cb.setDebugEnabled(true)
-				.setOAuthConsumerKey("m47BhNIxXyzqBLD9zDEbivGOG")
-				.setOAuthConsumerSecret("h0gtAwWXzVaTb9YltZVMXJy8md3MPKNSPGVYg3xbU9aWaKtdM5")
-				.setOAuthAccessToken("1055232838059077632-lIAQzn5Gvhj3H7Ox4hH4FHxn1vQYCP")
-				.setOAuthAccessTokenSecret("p6aES0HNDcJOCPxjtkJzS6gT2E0ZKy2uKQT82uVP8JrEE");
+				.setOAuthConsumerKey("gSs8YTJ2uMDSdBHImPqxbEHxA")
+				.setOAuthConsumerSecret("SUPKAPtB9wNc0r6qlixXHxgthWt9LR66KccA02j9CMSu166jCF")
+				.setOAuthAccessToken("1055232838059077632-aQRtKqJfuvhUyF9Nr7O5YdWExQCFsL")
+				.setOAuthAccessTokenSecret("FIlIGoPWqPwV3qKgpKohI16Pw91mQTtLj0aTSLYD2qo0n");
 				TwitterFactory tf = new TwitterFactory(cb.build());
 				Twitter twitter = tf.getInstance();
 				List<Status> statuses = twitter.getHomeTimeline();
