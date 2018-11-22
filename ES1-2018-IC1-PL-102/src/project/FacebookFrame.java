@@ -45,7 +45,7 @@ public class FacebookFrame extends JFrame {
 	 */
 	public FacebookFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 727, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,14 +54,14 @@ public class FacebookFrame extends JFrame {
 
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(229, 172, 195, 78);
+		textArea.setBounds(231, 343, 343, 78);
 		contentPane.add(textArea);
 
 
 		//////////FOTO FACEBOOK
 		JLabel faceLabel = new JLabel("");
 		faceLabel.setBackground(Color.WHITE);
-		faceLabel.setBounds(33, 35, 97, 97);
+		faceLabel.setBounds(584, 332, 106, 89);
 		ImageIcon facelogo = new ImageIcon("imagens/face.png");
 
 		/////////RESIZE DA FOTO
@@ -74,13 +74,13 @@ public class FacebookFrame extends JFrame {
 
 		////////////TEXTO DE PESQUISA
 		textField = new JTextField();
-		textField.setBounds(8, 172, 146, 33);
+		textField.setBounds(10, 339, 146, 33);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		/////////BOTOES
 		JButton btnNewButton = new JButton("GO");
-		btnNewButton.setBounds(164, 172, 55, 33);
+		btnNewButton.setBounds(166, 339, 55, 33);
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -91,13 +91,13 @@ public class FacebookFrame extends JFrame {
 		});
 		
 		
-		JButton btnRetweet = new JButton("POST");
-		btnRetweet.setBounds(102, 216, 117, 33);
-		contentPane.add(btnRetweet);
+		JButton btnPost = new JButton("POST");
+		btnPost.setBounds(104, 383, 117, 33);
+		contentPane.add(btnPost);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 
 		JButton backButton = new JButton();
-		backButton.setBounds(8, 216, 87, 33);
+		backButton.setBounds(10, 383, 87, 33);
 		contentPane.add(backButton);
 		backButton.setText("BACK");
 		//backButton.setIcon(new ImageIcon("backarrow.png"));
@@ -109,7 +109,7 @@ public class FacebookFrame extends JFrame {
 		});
 
 		JPanel panel = new JPanel();
-		panel.setBounds(164, 11, 260, 150);
+		panel.setBounds(10, 11, 691, 316);
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 

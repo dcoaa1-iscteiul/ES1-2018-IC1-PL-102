@@ -45,7 +45,7 @@ public class EmailFrame extends JFrame {
 	 */
 	public EmailFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 727, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,14 +54,15 @@ public class EmailFrame extends JFrame {
 
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(229, 172, 195, 78);
+		textArea.setBounds(231, 343, 343, 78);
 		contentPane.add(textArea);
 
 
 		//////////FOTO EMAIL
 		JLabel mailLabel = new JLabel("");
 		mailLabel.setBackground(Color.WHITE);
-		mailLabel.setBounds(33, 35, 97, 97);
+		mailLabel.setBounds(584, 332, 106, 89);
+
 		ImageIcon emailLogo = new ImageIcon("imagens/email.png");
 
 		/////////RESIZE DA FOTO
@@ -74,27 +75,27 @@ public class EmailFrame extends JFrame {
 
 
 		textField = new JTextField();
-		textField.setBounds(8, 172, 146, 33);
+		textField.setBounds(10, 339, 146, 33);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		JButton btnNewButton = new JButton("GO");
-		btnNewButton.setBounds(164, 172, 55, 33);
+		btnNewButton.setBounds(166, 339, 55, 33);
 		contentPane.add(btnNewButton);
 
 		JButton btnRetweet = new JButton("ENVIAR");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				closeFrame();
+				//closeFrame();
 			}
 		});
 		
-		btnRetweet.setBounds(102, 216, 117, 33);
+		btnRetweet.setBounds(104, 383, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 
 		JButton backButton = new JButton();
-		backButton.setBounds(8, 216, 87, 33);
+		backButton.setBounds(10, 383, 87, 33);
 		contentPane.add(backButton);
 		backButton.setText("BACK");
 		//backButton.setIcon(new ImageIcon("backarrow.png"));
@@ -106,7 +107,7 @@ public class EmailFrame extends JFrame {
 		});
 
 		JPanel panel = new JPanel();
-		panel.setBounds(164, 11, 260, 150);
+		panel.setBounds(10, 11, 691, 316);
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 

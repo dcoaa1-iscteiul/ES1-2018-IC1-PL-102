@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.JTextArea;
@@ -27,6 +28,7 @@ public class TwitterFrame extends JFrame {
 	private JButton button;
 	public JTextArea textArea;
 	public static JList<String> twitterJlist;
+	private JScrollPane endereçosScroll;
 
 	/**
 	 * Launch the application.
@@ -55,7 +57,7 @@ public class TwitterFrame extends JFrame {
 	 */
 	public TwitterFrame() throws IOException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 727, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,14 +66,14 @@ public class TwitterFrame extends JFrame {
 		
 		textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(229, 172, 195, 78);
+		textArea.setBounds(231, 343, 343, 78);
 		contentPane.add(textArea);
 		
 		
 		//////////FOTO TWITTER
 		JLabel twitterLabel = new JLabel("");
 		twitterLabel.setBackground(Color.WHITE);
-		twitterLabel.setBounds(33, 35, 97, 97);
+		twitterLabel.setBounds(584, 332, 106, 89);
 		ImageIcon twitterLogo = new ImageIcon("imagens/twitter.png");
 
 		/////////RESIZE DA FOTO
@@ -84,12 +86,12 @@ public class TwitterFrame extends JFrame {
 
 		
 		textField = new JTextField();
-		textField.setBounds(8, 172, 146, 33);
+		textField.setBounds(10, 339, 146, 33);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("GO");
-		btnNewButton.setBounds(164, 172, 55, 33);
+		btnNewButton.setBounds(166, 339, 55, 33);
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -102,7 +104,7 @@ public class TwitterFrame extends JFrame {
 		
 	
 		JButton btnRetweet = new JButton("RETWEET");
-		btnRetweet.setBounds(102, 216, 117, 33);
+		btnRetweet.setBounds(104, 383, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 		btnRetweet.addActionListener(new ActionListener() {
@@ -114,7 +116,7 @@ public class TwitterFrame extends JFrame {
 		});
 		
 		JButton backButton = new JButton();
-		backButton.setBounds(8, 216, 87, 33);
+		backButton.setBounds(10, 383, 87, 33);
 		contentPane.add(backButton);
 		backButton.setText("BACK");
 		backButton.setIcon(new ImageIcon("backarrow.png"));
@@ -126,16 +128,18 @@ public class TwitterFrame extends JFrame {
 		});
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(164, 11, 260, 150);
+		panel.setBounds(10, 11, 691, 316);
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		twitterJlist = new JList<String>();
 		twitterJlist.setBackground(Color.WHITE);
 		twitterJlist.setForeground(Color.BLACK);
-		panel.add(twitterJlist);
 		
+		endereçosScroll = new JScrollPane(twitterJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
+		panel.add(endereçosScroll);
 		
 	}
 	
