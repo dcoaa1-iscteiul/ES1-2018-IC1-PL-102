@@ -91,7 +91,7 @@ public class TwitterFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				startSearch();
+				TwitterMain.search(textField.getText());
 				
 
 			}

@@ -17,11 +17,10 @@ public class TwitterMain extends Thread  {
 
 	private TwitterFrame janela;
 	private Twitter twitter;
+	private ConfigurationBuilder cb;
+	private TwitterFactory tf;
 
-	public TwitterMain() {
-
-
-	}
+	
 	
 	@Override
 	public void run() {
@@ -31,43 +30,9 @@ public class TwitterMain extends Thread  {
 		}
 	}
 
-
-	public static void main(String[] args) {
-
-		
-		// http://twitter4j.org
-		// http://twitter4j.org/en/code-examples.html
-		// https://www.youtube.com/watch?v=uYPmkzMpnxw
-
-	}
-
-
-	public void search() {
-
-		try {
-			List<Status> statuses = twitter.getHomeTimeline();
-			System.out.println("------------------------\n Showing home timeline \n------------------------");
-			int counter=0;
-			int counterTotal = 0;
-			for (Status status : statuses) {
-				if (status.getUser().getName() != null && status.getUser().getName().contains("asdasdasd")) {
-					System.out.println(status.getUser().getName() + ":" + status.getText());
-					counter++;
-				}
-				counterTotal++;
-			}
-			System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
-
-			//enviar a lista pro retweet
-			//            Retweet.retweet();
-
-		} catch (Exception e) { System.out.println(e.getMessage()); }
-	}
-
-
 	public void authentication() {
 
-		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
 		.setOAuthConsumerKey("gSs8YTJ2uMDSdBHImPqxbEHxA")
 		.setOAuthConsumerSecret("SUPKAPtB9wNc0r6qlixXHxgthWt9LR66KccA02j9CMSu166jCF")
@@ -78,10 +43,7 @@ public class TwitterMain extends Thread  {
 	}
 
 
-	public static void retweet(String s) {
-
-		//obter o texto que o utilizador quiser inserir no retweet;
-		//if(!retweet.isEmpty()) {
+	public static void retweet(String retweet) {
 			try {
 				ConfigurationBuilder cb = new ConfigurationBuilder();
 				cb.setDebugEnabled(true)
@@ -91,9 +53,7 @@ public class TwitterMain extends Thread  {
 				.setOAuthAccessTokenSecret("FIlIGoPWqPwV3qKgpKohI16Pw91mQTtLj0aTSLYD2qo0n");
 				TwitterFactory tf = new TwitterFactory(cb.build());
 				Twitter twitter = tf.getInstance();
-				List<Status> statuses = twitter.getHomeTimeline();
-				//twitter.retweetStatus(arg0);
-				twitter.updateStatus(s);
+				twitter.updateStatus(retweet);
 			} catch (Exception e) { System.out.println(e.getMessage()); }
 		}
 	
@@ -104,7 +64,30 @@ public class TwitterMain extends Thread  {
 		//retweet();
 		
 	}
+
+	public static void search(String search) {
+		try {
+			ConfigurationBuilder cb = new ConfigurationBuilder();
+			cb.setDebugEnabled(true)
+			.setOAuthConsumerKey("gSs8YTJ2uMDSdBHImPqxbEHxA")
+			.setOAuthConsumerSecret("SUPKAPtB9wNc0r6qlixXHxgthWt9LR66KccA02j9CMSu166jCF")
+			.setOAuthAccessToken("1055232838059077632-aQRtKqJfuvhUyF9Nr7O5YdWExQCFsL")
+			.setOAuthAccessTokenSecret("FIlIGoPWqPwV3qKgpKohI16Pw91mQTtLj0aTSLYD2qo0n");
+			TwitterFactory tf = new TwitterFactory(cb.build());
+			Twitter twitter = tf.getInstance();
+			List<Status> statuses = twitter.getHomeTimeline();
+			String show = new String();
+			for (Status status : statuses) {
+				if (status.getUser().getName().contains(search) || status.getText().contains(search)) {
+					System.out.println(status);
+					
+				}
+			}
+			twitter.updateStatus(search);
+		} catch (Exception e) { System.out.println(e.getMessage()); }
+	
+		
+	}
+
 }
-
-
 
