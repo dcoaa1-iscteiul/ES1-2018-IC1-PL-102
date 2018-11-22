@@ -1,4 +1,4 @@
-package receive;
+package project;
 
 public class FacebookAPI {
 
