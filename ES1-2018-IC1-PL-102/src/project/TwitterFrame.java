@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,6 +26,7 @@ public class TwitterFrame extends JFrame {
 	public JTextField textField;
 	private JButton button;
 	public JTextArea textArea;
+	public static JList<String> twitterJlist;
 
 	/**
 	 * Launch the application.
@@ -105,7 +107,7 @@ public class TwitterFrame extends JFrame {
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TwitterMain.retweet(textField.getText());
+				TwitterMain.tweet(textArea.getText());
 				
 
 			}
@@ -128,14 +130,23 @@ public class TwitterFrame extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JList list = new JList();
-		list.setBackground(Color.WHITE);
-		list.setForeground(Color.BLACK);
-		panel.add(list);
+		twitterJlist = new JList<String>();
+		twitterJlist.setBackground(Color.WHITE);
+		twitterJlist.setForeground(Color.BLACK);
+		panel.add(twitterJlist);
 		
 		
 		
 	}
+	
+	public static void info2JList() {
+		DefaultListModel<String> listModel = new DefaultListModel<String>();
+			for (String line : TwitterMain.info) {
+				listModel.addElement(line);
+			}
+			twitterJlist.setModel(listModel);
+			System.out.println(twitterJlist);
+		}
 	
 	public void startSearch() {
 		

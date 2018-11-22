@@ -79,8 +79,6 @@ public class MenuPrincipal extends JFrame {
 		contentPane.add(emailCheckBox);
 
 
-
-
 		JTextPane txtpnAsdasd = new JTextPane();
 		txtpnAsdasd.setEditable(false);
 		txtpnAsdasd.setBackground(Color.WHITE);
