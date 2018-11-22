@@ -8,11 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JTextArea;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -24,10 +24,15 @@ public class TwitterFrame extends JFrame {
 	private JPanel contentPane;
 	public JTextField textField;
 	private JButton button;
+	public JTextArea textArea;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	/*public TwitterFrame(TwitterMain frame) {
+	}
+		*/
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,7 +60,7 @@ public class TwitterFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setBounds(229, 172, 195, 78);
 		contentPane.add(textArea);
@@ -87,6 +92,7 @@ public class TwitterFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				startSearch();
+				
 
 			}
 		});
@@ -97,6 +103,13 @@ public class TwitterFrame extends JFrame {
 		btnRetweet.setBounds(102, 216, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
+		btnRetweet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TwitterMain.retweet();
+				
+
+			}
+		});
 		
 		JButton backButton = new JButton();
 		backButton.setBounds(8, 216, 87, 33);
@@ -137,6 +150,10 @@ public class TwitterFrame extends JFrame {
 	
 	public String getText() {
 		return textField.getText();
+	}
+	
+	public String getTweet() {
+		return textArea.getText();
 	}
 	
 	
