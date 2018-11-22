@@ -97,15 +97,15 @@ public class TwitterFrame extends JFrame {
 			}
 		});
 		
-		startSearch();
 		
+	
 		JButton btnRetweet = new JButton("RETWEET");
 		btnRetweet.setBounds(102, 216, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TwitterMain.retweet();
+				TwitterMain.retweet(textField.getText());
 				
 
 			}

@@ -78,7 +78,7 @@ public class TwitterMain extends Thread  {
 	}
 
 
-	public static void retweet() {
+	public static void retweet(String s) {
 
 		//obter o texto que o utilizador quiser inserir no retweet;
 		//if(!retweet.isEmpty()) {
@@ -93,7 +93,7 @@ public class TwitterMain extends Thread  {
 				Twitter twitter = tf.getInstance();
 				List<Status> statuses = twitter.getHomeTimeline();
 				//twitter.retweetStatus(arg0);
-				twitter.updateStatus("asdasdasd");
+				twitter.updateStatus(s);
 			} catch (Exception e) { System.out.println(e.getMessage()); }
 		}
 	
