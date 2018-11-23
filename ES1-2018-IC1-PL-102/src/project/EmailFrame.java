@@ -11,18 +11,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class EmailFrame extends JFrame {
 
 	public JScrollPane endereçosScroll;
-	private JTextField textField;
+	public static JTextField textField;
 	public JPanel contentPane;
 	public static JList<String> EmailJlist;
 	public static JFrame frame;
@@ -126,6 +129,7 @@ public class EmailFrame extends JFrame {
 		EmailJlist = new JList<String>();
 		EmailJlist.setBackground(Color.WHITE);
 		EmailJlist.setForeground(Color.BLACK);
+
 		
 		endereçosScroll = new JScrollPane(EmailJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -144,5 +148,9 @@ public class EmailFrame extends JFrame {
 	
 	public void closeFrame(){
 	    super.dispose();
+	}
+	
+	public String getText() {
+		return textField.getText();
 	}
 }
