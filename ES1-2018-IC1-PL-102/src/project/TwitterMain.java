@@ -21,35 +21,11 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterMain {
 
-
-	//private ConfigurationBuilder cb;
 	private TwitterFactory tf;
 	public static List<Mensagem> info = new ArrayList<Mensagem>();
 
 
-	/*
-	@Override
-	public void run() {
-		while(!interrupted()) {
-			//startTwitter();
 
-		}
-	}
-	 */
-	/*
-	public void authentication() {
-
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(true)
-		.setOAuthConsumerKey("gSs8YTJ2uMDSdBHImPqxbEHxA")
-		.setOAuthConsumerSecret("SUPKAPtB9wNc0r6qlixXHxgthWt9LR66KccA02j9CMSu166jCF")
-		.setOAuthAccessToken("1055232838059077632-aQRtKqJfuvhUyF9Nr7O5YdWExQCFsL")
-		.setOAuthAccessTokenSecret("FIlIGoPWqPwV3qKgpKohI16Pw91mQTtLj0aTSLYD2qo0n");
-		TwitterFactory tf = new TwitterFactory(cb.build());
-		twitter = tf.getInstance();        		
-	}
-
-	 */
 	public static void tweet(String tweet) {
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
