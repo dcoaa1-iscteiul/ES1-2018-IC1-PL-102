@@ -18,7 +18,6 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;

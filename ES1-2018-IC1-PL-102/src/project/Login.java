@@ -15,11 +15,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.SystemColor;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.DropMode;
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
