@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.DefaultListModel;
@@ -17,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -27,8 +30,10 @@ public class TwitterFrame extends JFrame {
 	public JTextField textField;
 	private JButton button;
 	public JTextArea textArea;
-	public static JList<String> twitterJlist;
+	public static JList<Mensagem> twitterJlist;
 	private JScrollPane endereçosScroll;
+	public static JFrame frame;
+	public static JButton btnRetweet;
 
 	/**
 	 * Launch the application.
@@ -41,7 +46,7 @@ public class TwitterFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TwitterFrame frame = new TwitterFrame();
+					frame = new TwitterFrame();
 					frame.setVisible(true);
 					frame.setTitle("Twitter");
 				} catch (Exception e) {
@@ -66,7 +71,7 @@ public class TwitterFrame extends JFrame {
 		
 		textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(231, 343, 343, 78);
+		textArea.setBounds(231, 343, 284, 72);
 		contentPane.add(textArea);
 		
 		
@@ -102,15 +107,17 @@ public class TwitterFrame extends JFrame {
 		});
 		
 		
-	
-		JButton btnRetweet = new JButton("RETWEET");
+		
+		btnRetweet = new JButton("RETWEET");
 		btnRetweet.setBounds(104, 383, 117, 33);
 		contentPane.add(btnRetweet);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TwitterMain.tweet(textArea.getText());
 				
+				TwitterMain.retweet(twitterJlist.getSelectedValue().getId());
+				//TwitterMain.tweet(textArea.getText());
+				System.out.println(twitterJlist.getSelectedValue().getId());
 
 			}
 		});
@@ -132,21 +139,41 @@ public class TwitterFrame extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		twitterJlist = new JList<String>();
+		twitterJlist = new JList<Mensagem>();
+		twitterJlist.setValueIsAdjusting(true);
+		
 		twitterJlist.setBackground(Color.WHITE);
 		twitterJlist.setForeground(Color.BLACK);
+		twitterJlist.addMouseListener(new MouseAdapter(){
+	          @Override
+	          public void mouseClicked(MouseEvent e) {
+	        	  //int index = twitterJlist.getSelectedIndex();
+	        	  JOptionPane.showMessageDialog(TwitterFrame.frame, twitterJlist.getSelectedValue().getText());
+	              
+	              System.out.println("Mouse click.");
+	          }
+	    });
 		
 		endereçosScroll = new JScrollPane(twitterJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		panel.add(endereçosScroll);
 		
+		JButton post = new JButton("POST");
+		post.setBounds(525, 343, 49, 73);
+		contentPane.add(post);
+		post.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg1) {
+				TwitterMain.tweet(getTweet());
+			}
+		});
+		
 	}
 	
 	public static void info2JList() {
-		DefaultListModel<String> listModel = new DefaultListModel<String>();
-			for (String line : TwitterMain.info) {
-				listModel.addElement(line);
+		DefaultListModel<Mensagem> listModel = new DefaultListModel<Mensagem>();
+			for (Mensagem msg : TwitterMain.info) {
+				listModel.addElement(msg);
 			}
 			twitterJlist.setModel(listModel);
 			System.out.println(twitterJlist);
@@ -170,7 +197,5 @@ public class TwitterFrame extends JFrame {
 	public String getTweet() {
 		return textArea.getText();
 	}
-	
-	
 
 }
