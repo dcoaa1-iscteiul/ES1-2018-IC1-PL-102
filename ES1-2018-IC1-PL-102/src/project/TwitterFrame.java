@@ -49,6 +49,8 @@ public class TwitterFrame extends JFrame {
 					frame = new TwitterFrame();
 					frame.setVisible(true);
 					frame.setTitle("Twitter");
+					frame.pack();
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
