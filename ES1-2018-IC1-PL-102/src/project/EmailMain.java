@@ -3,14 +3,20 @@ package project;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
+import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import org.jsoup.Jsoup;
@@ -19,6 +25,8 @@ public class EmailMain {
 
 	public static List<String> info = new ArrayList<String>();
 	public static Folder emailFolder;
+	public static String username;
+	public static String password;
 
 	public static void getMail(String pop3Host, String storeType, String user,
 			String password) {
@@ -32,16 +40,18 @@ public class EmailMain {
 			properties.put("mail.pop3.starttls.enable", "true");
 			Session emailSession = Session.getDefaultInstance(properties);
 			// emailSession.setDebug(true);
+			
+			
 
 			// create the POP3 store object and connect with the pop server
 			Store store = emailSession.getStore("pop3s");
 
 			store.connect(pop3Host, user, password);
-
+			
 			//create the folder object and open it
 			Folder emailFolder = store.getFolder("INBOX");
 			emailFolder.open(Folder.READ_ONLY);
-
+			
 			// retrieve the messages from the folder in an array and print it
 			Message[] messages = emailFolder.getMessages();
 			//System.out.println("messages.length---" + messages.length);
@@ -109,15 +119,48 @@ public class EmailMain {
 
 
 
-
-
 	public static void authenticate() {
 
 		String host = "outlook.office365.com";// change accordingly
 		String mailStoreType = "pop3";
-		String username = "faons@iscte-iul.pt";// change accordingly
-		String password = "Kironaxe32!!";// change accordingly
+		username = "faons@iscte-iul.pt";// change accordingly
+		password = "Kironaxe32!!";// change accordingly
 		getMail(host, mailStoreType, username, password);
+	}
+	
+	public static void enviarMail(String destinatario, String assunto, String texto) {
+
+
+		Properties proper = System.getProperties();
+
+		proper.put("mail.smtp.starttls.enable", "true");
+		proper.put("mail.smtp.host", "smtp.outlook.com");
+		proper.put("mail.smtp.port", "587");
+		proper.put("mail.smtp.auth", "true");
+		proper.put("mail.smtp.starttls.required", "true");
+
+
+
+		Session session = Session.getDefaultInstance(proper, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("faons@iscte-iul.pt", "Kironaxe32!!");
+			}
+		});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("faons@iscte-iul.pt"));
+			message.setRecipients(Message.RecipientType.TO,  InternetAddress.parse(destinatario));
+			message.setSubject(assunto);
+			message.setText(texto);
+			Transport.send(message);
+
+			System.out.println("\n Your Message was delivered successfully");
+		}catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
