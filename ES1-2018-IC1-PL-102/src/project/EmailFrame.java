@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class EmailFrame extends JFrame {
 
@@ -40,6 +41,7 @@ public class EmailFrame extends JFrame {
 					frame = new EmailFrame();
 					frame.setVisible(true);
 					frame.setTitle("Email");
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,7 +55,7 @@ public class EmailFrame extends JFrame {
 	 */
 	public EmailFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 727, 466);
+		setBounds(100, 100, 727, 465);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,7 +64,7 @@ public class EmailFrame extends JFrame {
 
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(231, 343, 343, 78);
+		textArea.setBounds(231, 343, 343, 72);
 		contentPane.add(textArea);
 
 
@@ -87,27 +89,29 @@ public class EmailFrame extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JButton btnNewButton = new JButton("GO");
-		btnNewButton.setBounds(166, 339, 55, 33);
-		contentPane.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton go = new JButton("GO");
+		go.setBounds(166, 339, 55, 33);
+		contentPane.add(go);
+		go.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EmailMain.authenticate();
 			}
 		
 		});
 			
-		JButton btnRetweet = new JButton("ENVIAR");
-		btnRetweet.setBounds(104, 383, 117, 33);
-		contentPane.add(btnRetweet);
-		btnRetweet.addActionListener(new ActionListener() {
+		JButton enviar = new JButton("ENVIAR EMAIL");
+		enviar.setBounds(104, 383, 117, 33);
+		contentPane.add(enviar);
+		enviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//closeFrame();
+				EnviarEmail eFrame;
+				eFrame = new EnviarEmail();
+				eFrame.setVisible(true);
 			}
 		});
 		
-		btnRetweet.setBounds(104, 383, 117, 33);
-		contentPane.add(btnRetweet);
+		enviar.setBounds(104, 383, 117, 33);
+		contentPane.add(enviar);
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 
 		JButton backButton = new JButton("BACK");
@@ -129,6 +133,7 @@ public class EmailFrame extends JFrame {
 		EmailJlist = new JList<String>();
 		EmailJlist.setBackground(Color.WHITE);
 		EmailJlist.setForeground(Color.BLACK);
+		
 
 		
 		endereçosScroll = new JScrollPane(EmailJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -136,6 +141,8 @@ public class EmailFrame extends JFrame {
 		panel.add(endereçosScroll);
 
 	}
+	
+	
 	
 	public static void info2JList() {
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
