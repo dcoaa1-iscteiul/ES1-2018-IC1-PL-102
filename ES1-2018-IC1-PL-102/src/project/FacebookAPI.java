@@ -20,7 +20,8 @@ public class FacebookAPI {
 		 * Facebook API Tutorials in Java # 2 | Get User Access Token
 		 * https://www.youtube.com/watch?v=GwbO_PdwK_4&index=2&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb
 		 */
-		String accessToken2 = "EAAGZBEccjciEBACLQCLnTN82o8ZBa7EtfC80jeEkPFSrZAZB8zunAsYFgo9g0CSWN7jFcXSVuIaqQlN09RBe4IIaQAGc7SqQdedtTQ0wz3Oug6VZAgZA6jNxeWkGE7mjp06s3t3nSgGmTOa4zaV3ZCaZCBPV5PjfcvLQ0rZB1ISq2zNoBjjLs5C7uz6c5e0d6ogItNRM0KbRJQwZDZD";
+		String accessToken2 = "EAAEyBUHNss4BAI7mbqERBGpE3XDfljeyaNHgxS3gJrRL3BnlUz7DcHKH1yIExvukdZCJWAv35P2D6at4z81l0jSWzlgGYjHc64U7huD9bY3lEcSOYQCbLxEQa1AhukW6RTebs8CnFT23WhpXhbYyHCMuXn8EZD\r\n" + 
+				"";
 		FacebookClient fbClient2 = new DefaultFacebookClient(accessToken2);
 		User me2 = fbClient2.fetchObject("me", User.class);
 		System.out.println("Facebook:");
@@ -31,9 +32,10 @@ public class FacebookAPI {
 		 * Facebook API Tutorials in Java # 4 | Create Your Own Fb APP & Extend User Access Token  
 		 * https://www.youtube.com/watch?v=qFZazZ1JXsM&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb&index=5
 		 */
-		String accessToken4 = "EAAGZBEccjciEBACLQCLnTN82o8ZBa7EtfC80jeEkPFSrZAZB8zunAsYFgo9g0CSWN7jFcXSVuIaqQlN09RBe4IIaQAGc7SqQdedtTQ0wz3Oug6VZAgZA6jNxeWkGE7mjp06s3t3nSgGmTOa4zaV3ZCaZCBPV5PjfcvLQ0rZB1ISq2zNoBjjLs5C7uz6c5e0d6ogItNRM0KbRJQwZDZD";
+		String accessToken4 = "EAAEyBUHNss4BAI7mbqERBGpE3XDfljeyaNHgxS3gJrRL3BnlUz7DcHKH1yIExvukdZCJWAv35P2D6at4z81l0jSWzlgGYjHc64U7huD9bY3lEcSOYQCbLxEQa1AhukW6RTebs8CnFT23WhpXhbYyHCMuXn8EZD\r\n" + 
+				"";
 		FacebookClient fbClient4 = new DefaultFacebookClient(accessToken4);
-		AccessToken extendedAccessToken4 = fbClient4.obtainExtendedAccessToken("490458541421089","b4b0922f88578643b1c3795ed4cde605");
+		AccessToken extendedAccessToken4 = fbClient4.obtainExtendedAccessToken("336473136935630","a9394f2b0aa7667e6274ce1d47d73239");
 		System.out.println("ExtendedAccessToken: "+extendedAccessToken4.getAccessToken());
 		System.out.println("Expires: " + extendedAccessToken4.getExpires());
 
@@ -42,7 +44,8 @@ public class FacebookAPI {
 		 * https://www.youtube.com/watch?v=wiFif4gOdFE&index=6&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb
 		*/ 
 		String accessToken5 ;//= "EAAGZBEccjciEBAJ37ZAIbHKiL1Mo1HHex2pQTcs41dq8azfBvFGgt4eGgKBq12kSssOof51FKO0niKu7AaVKs3dy8W1ilqp4xcjFD1F9mmjJpVyeDnZAffUXRfh7zXL06BuSwQtfHMJbmJ079qCnkT844brHx966cz73JZBZBFy2Bv1rWu7T1rQddZCVpxywZCO6lDxoWDk2gZDZD";
-		accessToken5 = "EAAGZBEccjciEBACLQCLnTN82o8ZBa7EtfC80jeEkPFSrZAZB8zunAsYFgo9g0CSWN7jFcXSVuIaqQlN09RBe4IIaQAGc7SqQdedtTQ0wz3Oug6VZAgZA6jNxeWkGE7mjp06s3t3nSgGmTOa4zaV3ZCaZCBPV5PjfcvLQ0rZB1ISq2zNoBjjLs5C7uz6c5e0d6ogItNRM0KbRJQwZDZD";	
+		accessToken5 = "EAAEyBUHNss4BAI7mbqERBGpE3XDfljeyaNHgxS3gJrRL3BnlUz7DcHKH1yIExvukdZCJWAv35P2D6at4z81l0jSWzlgGYjHc64U7huD9bY3lEcSOYQCbLxEQa1AhukW6RTebs8CnFT23WhpXhbYyHCMuXn8EZD\r\n" + 
+				"";	
 		FacebookClient fbClient5 = new DefaultFacebookClient(accessToken5);
 
 		Connection<Post> result = fbClient5.fetchConnection("me/feed",Post.class);
@@ -52,7 +55,7 @@ public class FacebookAPI {
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				// Filters only posts that contain the word "Inform"
-				if (aPost.getMessage() != null && aPost.getMessage().contains("Mestrado")) {
+				if (aPost.getMessage() != null && aPost.getMessage().contains("")) {
 					System.out.println("---- Post "+ counter5 + " ----");
 					System.out.println("Id: "+"fb.com/"+aPost.getId());
 					System.out.println("Message: "+aPost.getMessage());
