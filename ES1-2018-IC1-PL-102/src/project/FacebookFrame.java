@@ -7,12 +7,14 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -21,7 +23,9 @@ public class FacebookFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	//public JFrame frame;
+	public static JList<String> FacebookJlist;
+	private JScrollPane endereçosScroll;
+	public static JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -30,9 +34,11 @@ public class FacebookFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FacebookFrame frame = new FacebookFrame();
+					frame = new FacebookFrame();
 					frame.setVisible(true);
 					frame.setTitle("Facebook");
+					frame.pack();
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,14 +85,12 @@ public class FacebookFrame extends JFrame {
 		textField.setColumns(10);
 
 		/////////BOTOES
-		JButton btnNewButton = new JButton("GO");
-		btnNewButton.setBounds(166, 339, 55, 33);
-		contentPane.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton go = new JButton("GO");
+		go.setBounds(166, 339, 55, 33);
+		contentPane.add(go);
+		go.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				//getText()
-
+				FacebookAPI.search(textField.getText());
 			}
 		});
 		
@@ -94,6 +98,11 @@ public class FacebookFrame extends JFrame {
 		JButton btnPost = new JButton("POST");
 		btnPost.setBounds(104, 383, 117, 33);
 		contentPane.add(btnPost);
+		btnPost.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FacebookAPI.post(textArea.getText());
+			}
+		});
 		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 
 		JButton backButton = new JButton();
@@ -112,12 +121,16 @@ public class FacebookFrame extends JFrame {
 		panel.setBounds(10, 11, 691, 316);
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
+		
+		FacebookJlist = new JList<String>();
+		FacebookJlist.setBackground(Color.WHITE);
+		FacebookJlist.setForeground(Color.BLACK);
+		panel.add(FacebookJlist);
 
-		JList list = new JList();
-		list.setBackground(Color.WHITE);
-		list.setForeground(Color.BLACK);
-		panel.add(list);
-
+		endereçosScroll = new JScrollPane(FacebookJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		panel.add(endereçosScroll);
 	}
 	
 	public String getText() {
@@ -127,5 +140,13 @@ public class FacebookFrame extends JFrame {
 	public void closeFrame(){
 	    super.dispose();
 	}
+	
+	public static void info2JList() {
+		DefaultListModel<String> listModel = new DefaultListModel<String>();
+			for (String line : FacebookAPI.getInfo()) {
+				listModel.addElement(line);
+			}
+			FacebookJlist.setModel(listModel);
+		}
 	
 }
