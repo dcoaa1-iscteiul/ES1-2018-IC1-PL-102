@@ -23,6 +23,8 @@ public class Mensagem {
 			return sender + " " + date + ": " + text;
 		if(tipo.equals(Tipo.MAIL))
 			return text;
+		if(tipo.equals(Tipo.FACE))
+			return text;
 
 		return " [tipo=" + tipo + ", text=" + text + ", sender=" + sender + ", subject=" + subject
 				+ "]";
