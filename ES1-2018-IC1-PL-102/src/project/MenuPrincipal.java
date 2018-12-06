@@ -31,7 +31,7 @@ public class MenuPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,7 +47,7 @@ public class MenuPrincipal extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -175,7 +175,7 @@ public class MenuPrincipal extends JFrame {
 
 		JTextPane txtpnBemVindo = new JTextPane();
 		txtpnBemVindo.setFont(new Font("Segoe UI Semibold", Font.BOLD, 29));
-		txtpnBemVindo.setText("BEM VINDO, + USERNAME");
+		txtpnBemVindo.setText("BEM VINDO");
 		txtpnBemVindo.setEditable(false);
 		txtpnBemVindo.setBackground(Color.WHITE);
 		txtpnBemVindo.setBounds(128, 11, 222, 81);
@@ -183,5 +183,19 @@ public class MenuPrincipal extends JFrame {
 
 
 
+	}
+	
+	public void run() {
+		try {
+			MenuPrincipal frame = new MenuPrincipal();
+			frame.setVisible(true);
+			Dimension dimensao = new Dimension(450,400);
+			frame.setPreferredSize(dimensao);
+			frame.pack();
+			frame.setResizable(false);
+			frame.setTitle("Menu Principal");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
