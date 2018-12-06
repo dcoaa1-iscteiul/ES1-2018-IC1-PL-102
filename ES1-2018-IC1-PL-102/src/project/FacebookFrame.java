@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -13,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -100,6 +103,7 @@ public class FacebookFrame extends JFrame {
 		contentPane.add(btnPost);
 		btnPost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				FacebookAPI.post(textArea.getText());
 			}
 		});
@@ -126,6 +130,15 @@ public class FacebookFrame extends JFrame {
 		FacebookJlist.setBackground(Color.WHITE);
 		FacebookJlist.setForeground(Color.BLACK);
 		panel.add(FacebookJlist);
+		FacebookJlist.addMouseListener(new MouseAdapter(){
+	          @Override
+	          public void mouseClicked(MouseEvent e) {
+	        	  //int index = twitterJlist.getSelectedIndex();
+	        	  JOptionPane.showMessageDialog(FacebookFrame.frame, FacebookJlist.getSelectedValue());
+	              
+	              System.out.println("Mouse click.");
+	          }
+		});
 
 		endereçosScroll = new JScrollPane(FacebookJlist, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
