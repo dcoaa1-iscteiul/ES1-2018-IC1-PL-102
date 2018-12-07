@@ -63,7 +63,7 @@ public class TwitterFrame extends JFrame {
 	 * @throws IOException 
 	 */
 	public TwitterFrame() throws IOException {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 727, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

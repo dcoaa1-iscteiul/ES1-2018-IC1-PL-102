@@ -2,6 +2,7 @@ package project;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,40 +17,25 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 
-public class Login extends JFrame {
+public class LoginFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField username;
 	private JPasswordField passwordField;
 	private JTextPane txtpnUsername;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-					Dimension dimensao = new Dimension(250,330);
-					frame.setPreferredSize(dimensao);
-					frame.pack();
-					frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Login() {
+	
+	public LoginFrame() {
+		
+		//JFrame frame = new Frame();
+		
+		Dimension dimensao = new Dimension(250,424);
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -57,17 +43,8 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("LOGIN");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				System.out.println(getUsername());
-				System.out.println(getPassword());
-			}
-		});
-		btnNewButton.setBounds(53, 231, 120, 37);
-		contentPane.add(btnNewButton);
 		
+	
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password");
 		txtpnPassword.setEditable(false);
@@ -100,30 +77,53 @@ public class Login extends JFrame {
 		passwordField.setBounds(53, 203, 120, 20);
 		contentPane.add(passwordField);
 		
-		try {
-			authenticate();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPrincipal menu= new MenuPrincipal();
+			
+				menu.run();
+				
+			}
+		});
+		btnLogin.setBounds(53, 231, 120, 37);
+		contentPane.add(btnLogin);
+		
+		
+		JButton btnRegistar = new JButton("REGISTAR");
+		btnRegistar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JOptionPane.showMessageDialog(contentPane, "Utilizador guardado! Insira os tokens na opção 'MUDAR DADOS'");
+			}
+		});
+		
+		btnRegistar.setBounds(53, 279, 120, 37);
+		contentPane.add(btnRegistar);
+		
+		JButton btnMudarDados = new JButton("MUDAR DADOS");
+		btnMudarDados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TokensFrame tf= new TokensFrame();
+			}
+		});
+		
+		btnMudarDados.setBounds(53, 333, 120, 37);
+		contentPane.add(btnMudarDados);
+		
+		this.setPreferredSize(dimensao);
+		this.pack();
+		this.setResizable(false);	
+		this.setVisible(true);
+		
 	}
 	
-	public void authenticate() throws IOException {
-		
-		//while(!interrupted()) {
-		if (getUsername().equals("h") && getPassword().equals("h")) { //não irá ser assim pois terá que funcionar com ficheiro XML
-		    System.out.println("Login successful");
-		} else {
-		    System.out.println("login failed");
-		}		
-}
 	
 	public String getUsername(){
 		return username.getText();
 	}
 	
-	public String getPassword(){
-		return passwordField.getText();
-	}
-
+	
 }
