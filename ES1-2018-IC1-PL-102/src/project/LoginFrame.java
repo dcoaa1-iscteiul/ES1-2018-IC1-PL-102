@@ -1,25 +1,28 @@
 package project;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Frame;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.soap.Node;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 public class LoginFrame extends JFrame {
 
@@ -33,7 +36,7 @@ public class LoginFrame extends JFrame {
 		
 		//JFrame frame = new Frame();
 		
-		Dimension dimensao = new Dimension(250,424);
+		Dimension dimensao = new Dimension(250,325);
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,37 +84,30 @@ public class LoginFrame extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPrincipal menu= new MenuPrincipal();
-			
-				menu.run();
+				if(authentication(username.getText())==true) {
+					MenuPrincipal menu= new MenuPrincipal();			
+					menu.run();
+					return;
+				}else {
+					JOptionPane.showMessageDialog(contentPane, "Utilizador não existente!");
+				}
 				
 			}
+
+			private boolean authentication(String a) {		
+				System.out.println(a);
+				String aux= "faons@iscte-iul.pt";
+				if(a.equals(aux)) { 
+					System.out.println("here");
+					return true;
+				}
+				return false;
+			}
+		
+			
 		});
 		btnLogin.setBounds(53, 231, 120, 37);
 		contentPane.add(btnLogin);
-		
-		
-		JButton btnRegistar = new JButton("REGISTAR");
-		btnRegistar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				JOptionPane.showMessageDialog(contentPane, "Utilizador guardado! Insira os tokens na opção 'MUDAR DADOS'");
-			}
-		});
-		
-		btnRegistar.setBounds(53, 279, 120, 37);
-		contentPane.add(btnRegistar);
-		
-		JButton btnMudarDados = new JButton("MUDAR DADOS");
-		btnMudarDados.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				TokensFrame tf= new TokensFrame();
-			}
-		});
-		
-		btnMudarDados.setBounds(53, 333, 120, 37);
-		contentPane.add(btnMudarDados);
 		
 		this.setPreferredSize(dimensao);
 		this.pack();

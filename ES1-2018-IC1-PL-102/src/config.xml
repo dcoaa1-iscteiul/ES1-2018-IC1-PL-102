@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<config>
-    <fbUser>Bruno</fbUser>
-    <fbToken>EAACrDVgqVRUBABn4HKWwui0wQnR3dbRQigJQhVQ3uIKlJZAzZA8uxUH1FwkuAcjU5JMWuYzbJAFJrciXLDUCSvb0ZAQ9x5cfB21tVZB5kIdLZBZBJF27KATQdZCUSHp4ScN4oL6leKjC6tYsx3aWUnI1TZCI3210MBcygaoaKujcgxjAtgi0MXy3wOQAMIomasW8cT9MIPz9W0PZBoJHqZAjhi</fbToken>
-    <twtUser>BomDiaAcademia</twtUser>
-    <twtToken>1052285380026806272-NOPAb6y9KaVHi8mWvUqVboZCDRzj83</twtToken>
-    <twtKey>axr8W68lwG2fYA2rvzt1GJmWF</twtKey>
-    <twtSecret>KhJwPrDKlOaecH2OoHNdvAjh7CVuvmIW49xpSXeXcigf3omgAO</twtSecret>
-    <twtTokenSecret>icvTMMUofe6Qi6souL29VEOktCjN5W7XAW5ZtsxYZ2c4A</twtTokenSecret>
-    <email>faons@iscte-iul.pt</email>
-    <password>Kironaxe32!!</password>
-</config>
+<?xml version="1.0" encoding="UTF-8"?>
+<user name="faons@iscte-iul.pt" password="Kironaxe32!!" accessToken="EAAEyBUHNss4BAOWWbafpqSvPQPYuRd4oZA8L4hr0RqpBgbgPc6VLsrHLtptdZAhaMxlOK1e9NRFikkWzJMUxNKQ6nejGjEh17sN5Ypmj0DaQLCZCRP4g8OUdYJDUd9PysZCwUgqA9D8mZCMrn2TdlJwJ0qAqiFNQZD" appId="EAAEyBUHNss4BAOWWbafpqSvPQPYuRd4oZA8L4hr0RqpBgbgPc6VLsrHLtptdZAhaMxlOK1e9NRFikkWzJMUxNKQ6nejGjEh17sN5Ypmj0DaQLCZCRP4g8OUdYJDUd9PysZCwUgqA9D8mZCMrn2TdlJwJ0qAqiFNQZD" authConsumerKey="EAAEyBUHNss4BAOWWbafpqSvPQPYuRd4oZA8L4hr0RqpBgbgPc6VLsrHLtptdZAhaMxlOK1e9NRFikkWzJMUxNKQ6nejGjEh17sN5Ypmj0DaQLCZCRP4g8OUdYJDUd9PysZCwUgqA9D8mZCMrn2TdlJwJ0qAqiFNQZD" authAccessToken="C24UhBh4Pi2xkpz0BQemkb9B4" authAccessTokenSecret="Dd8weM1Dbn5vLkJwnrBVLJS1W2MVRsPAf7W0thQ7qvkRA">
+
+
+</user>
