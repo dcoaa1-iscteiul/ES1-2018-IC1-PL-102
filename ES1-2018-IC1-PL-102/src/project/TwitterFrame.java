@@ -1,3 +1,6 @@
+/*
+ * Classe usada para a criação e uso de todos os componentes da interface relativa ao Twitter
+ */
 package project;
 
 import java.awt.BorderLayout;
@@ -36,12 +39,8 @@ public class TwitterFrame extends JFrame {
 	public static JButton btnRetweet;
 
 	/**
-	 * Launch the application.
+	 * Main usado para inicializar a frame.
 	 */
-	
-	/*public TwitterFrame(TwitterMain frame) {
-	}
-		*/
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,7 +58,7 @@ public class TwitterFrame extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Criação da frame com os critérios que o grupo achou mais adequado.
 	 * @throws IOException 
 	 */
 	public TwitterFrame() throws IOException {
@@ -113,12 +112,10 @@ public class TwitterFrame extends JFrame {
 		btnRetweet = new JButton("RETWEET");
 		btnRetweet.setBounds(104, 383, 117, 33);
 		contentPane.add(btnRetweet);
-		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 		btnRetweet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				TwitterMain.retweet(twitterJlist.getSelectedValue().getId());
-				//TwitterMain.tweet(textArea.getText());
 				System.out.println(twitterJlist.getSelectedValue().getId());
 
 			}
@@ -149,7 +146,6 @@ public class TwitterFrame extends JFrame {
 		twitterJlist.addMouseListener(new MouseAdapter(){
 	          @Override
 	          public void mouseClicked(MouseEvent e) {
-	        	  //int index = twitterJlist.getSelectedIndex();
 	        	  JOptionPane.showMessageDialog(TwitterFrame.frame, twitterJlist.getSelectedValue().getText());
 	              
 	              System.out.println("Mouse click.");
@@ -172,6 +168,9 @@ public class TwitterFrame extends JFrame {
 		
 	}
 	
+	/**
+	 * Converte a lista com os tweets para a JList (interface)
+	 */
 	public static void info2JList() {
 		DefaultListModel<Mensagem> listModel = new DefaultListModel<Mensagem>();
 			for (Mensagem msg : TwitterMain.info) {
@@ -181,21 +180,22 @@ public class TwitterFrame extends JFrame {
 			System.out.println(twitterJlist);
 		}
 	
-	public void startSearch() {
-		
-		if(getText().contains("123"))
-			System.out.println(getText());
-		
-	}
-	
 	public void closeFrame(){
 	    super.dispose();
 	}
 	
+	/**
+	 * @return
+	 * Devolve o texto inserido no textfield para pesquisa
+	 */
 	public String getText() {
 		return textField.getText();
 	}
 	
+	/**
+	 * @return
+	 * Devolve o texto inserido na textArea para fazer o Tweet.
+	 */
 	public String getTweet() {
 		return textArea.getText();
 	}

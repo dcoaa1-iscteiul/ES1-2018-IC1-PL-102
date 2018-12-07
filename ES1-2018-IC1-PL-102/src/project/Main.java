@@ -1,3 +1,6 @@
+/*
+ * Classe usada para inicializar o projeto.
+ */
 package project;
 
 public class Main {

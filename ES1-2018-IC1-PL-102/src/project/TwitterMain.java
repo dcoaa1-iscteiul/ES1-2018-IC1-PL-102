@@ -1,23 +1,17 @@
+/*
+ * Classe usada para tratar da informação do Twitter.
+ */
 package project;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-
 import project.Mensagem.Tipo;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
-import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
-
-
-
 
 public class TwitterMain {
 
@@ -26,6 +20,10 @@ public class TwitterMain {
 
 
 
+	/**
+	 * @param tweet
+	 * Função que recebe a string tweet com o texto que o utilizador que tweetar.
+	 */
 	public static void tweet(String tweet) {
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -41,6 +39,10 @@ public class TwitterMain {
 		} catch (Exception e) { System.out.println(e.getMessage()); }
 	}
 
+	/**
+	 * @param tweetID
+	 * Função que recebe o ID do tweet que o utilizador que retweetar.
+	 */
 	public static void retweet(Long tweetID) {
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -56,9 +58,13 @@ public class TwitterMain {
 			JOptionPane.showMessageDialog(TwitterFrame.frame, "ReTweet enviado!");
 		} catch (Exception e) { System.out.println(e.getMessage()); }
 	}
-	
-	
 
+
+
+	/**
+	 * @param search
+	 * Função que recebe uma string com o texto que o utilizador quer procurar no Twitter.
+	 */
 	public static void search(String search) {
 		try {
 			info.clear();
@@ -73,29 +79,21 @@ public class TwitterMain {
 			List<Status> statuses = twitter.getHomeTimeline();
 			for (Status status : statuses) {
 				Mensagem msg = new Mensagem(Tipo.TWITTER, status.getId(), status.getText(), status.getUser().getName(), status.getCreatedAt().toString());
-				
+
 				if (status.getUser().getName().contains(search) || status.getText().contains(search)) {
-					//System.out.println(status.getCreatedAt() + " " +
-					//status.getUser().getName() + " " + status.getText());
-					//info2JList(status);
 
-					//List<String> info = new ArrayList<String>();
-					
-					//info.add(status.getCreatedAt() + " " +
-							//status.getUser().getName() + " " + status.getText());
-					
 					info.add(msg);
-
 					System.out.println(info);
 					TwitterFrame.info2JList();
-
-
 				}
 			}
-			//twitter.updateStatus(search);
 		} catch (Exception e) { System.out.println(e.getMessage()); }
 	}
 
+	/**
+	 * @return
+	 * Função que devolve a lista com o tweets obtidos.
+	 */
 	public List<Mensagem> getList() {
 		return info;
 	}

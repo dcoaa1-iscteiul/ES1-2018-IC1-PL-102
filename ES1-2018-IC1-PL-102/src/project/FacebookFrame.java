@@ -1,3 +1,6 @@
+/*
+ * Classe usada para a criação e uso de todos os componentes da interface relativa ao Facebook
+ */
 package project;
 
 import java.awt.BorderLayout;
@@ -31,7 +34,7 @@ public class FacebookFrame extends JFrame {
 	public static JFrame frame;
 
 	/**
-	 * Launch the application.
+	 * Main usado para inicializar a frame.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -50,7 +53,7 @@ public class FacebookFrame extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Criação da frame com os critérios que o grupo achou mais adequado.
 	 */
 	public FacebookFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -107,17 +110,14 @@ public class FacebookFrame extends JFrame {
 				FacebookAPI.post(textArea.getText());
 			}
 		});
-		//ImageIcon arrowIcon = new ImageIcon("backarrow.png");
 
 		JButton backButton = new JButton();
 		backButton.setBounds(10, 383, 87, 33);
 		contentPane.add(backButton);
 		backButton.setText("BACK");
-		//backButton.setIcon(new ImageIcon("backarrow.png"));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg1) {
 				closeFrame();
-
 			}
 		});
 
@@ -133,9 +133,7 @@ public class FacebookFrame extends JFrame {
 		FacebookJlist.addMouseListener(new MouseAdapter(){
 	          @Override
 	          public void mouseClicked(MouseEvent e) {
-	        	  //int index = twitterJlist.getSelectedIndex();
-	        	  JOptionPane.showMessageDialog(FacebookFrame.frame, FacebookJlist.getSelectedValue());
-	              
+	        	  JOptionPane.showMessageDialog(FacebookFrame.frame, FacebookJlist.getSelectedValue());	              
 	              System.out.println("Mouse click.");
 	          }
 		});
@@ -146,6 +144,10 @@ public class FacebookFrame extends JFrame {
 		panel.add(endereçosScroll);
 	}
 	
+	/**
+	 * @return
+	 * Devolve o texto inserido no textfield para pesquisa
+	 */
 	public String getText() {
 		return textField.getText();
 	}
@@ -154,6 +156,9 @@ public class FacebookFrame extends JFrame {
 	    super.dispose();
 	}
 	
+	/**
+	 * Função que converte a lista com os posts para a JList (interface) 
+	 */
 	public static void info2JList() {
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
 			for (String line : FacebookAPI.getInfo()) {

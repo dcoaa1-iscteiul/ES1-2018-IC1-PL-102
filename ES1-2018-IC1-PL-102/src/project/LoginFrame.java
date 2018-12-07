@@ -1,3 +1,6 @@
+/*
+ * Classe usada para a criação e uso de todos os componentes da interface relativa ao Login
+ */
 package project;
 
 import java.awt.Color;
@@ -32,9 +35,10 @@ public class LoginFrame extends JFrame {
 	private JTextPane txtpnUsername;
 
 	
+	/**
+	 * Função usada para inicializar a frame.
+	 */
 	public LoginFrame() {
-		
-		//JFrame frame = new Frame();
 		
 		Dimension dimensao = new Dimension(250,325);
 		
@@ -117,6 +121,10 @@ public class LoginFrame extends JFrame {
 	}
 	
 	
+	/**
+	 * @return
+	 * Função para obter o nome de utilizador inserido e comparar.
+	 */
 	public String getUsername(){
 		return username.getText();
 	}

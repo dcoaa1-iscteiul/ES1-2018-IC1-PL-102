@@ -1,3 +1,6 @@
+/*
+ * Classe usada para a criação e uso de todos os componentes da interface relativa ao e-mail
+ */
 package project;
 
 import java.awt.BorderLayout;
@@ -32,7 +35,7 @@ public class EmailFrame extends JFrame {
 	public static JFrame frame;
 
 	/**
-	 * Launch the application.
+	 * Main usado para inicializar a frame.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,7 +54,7 @@ public class EmailFrame extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Criação da frame com os critérios que o grupo achou mais adequado.
 	 */
 	public EmailFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -144,6 +147,9 @@ public class EmailFrame extends JFrame {
 	
 	
 	
+	/**
+	 * Converte a lista com os e-mails para a JList (interface)
+	 */
 	public static void info2JList() {
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
 			for (String line : EmailMain.info) {
@@ -157,6 +163,10 @@ public class EmailFrame extends JFrame {
 	    super.dispose();
 	}
 	
+	/**
+	 * @return
+	 * Devolve o texto inserido no textfield para pesquisa
+	 */
 	public String getText() {
 		return textField.getText();
 	}

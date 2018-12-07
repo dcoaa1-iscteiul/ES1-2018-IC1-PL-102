@@ -1,3 +1,6 @@
+/*
+ * Classe usada para tratar da informação do email.
+ */
 package project;
 
 import java.util.ArrayList;
@@ -28,6 +31,13 @@ public class EmailMain {
 	public static String username;
 	public static String password;
 
+	/**
+	 * @param pop3Host
+	 * @param storeType
+	 * @param user
+	 * @param password
+	 * Função para converter as mensagens de email obtidas, após a ligação com sucesso, para o formato que será apresentado na interface.
+	 */
 	public static void getMail(String pop3Host, String storeType, String user,
 			String password) {
 		try {
@@ -38,11 +48,8 @@ public class EmailMain {
 			properties.put("mail.pop3.host", pop3Host);
 			properties.put("mail.pop3.port", "995");
 			properties.put("mail.pop3.starttls.enable", "true");
-			Session emailSession = Session.getDefaultInstance(properties);
-			// emailSession.setDebug(true);
-			
-			
-
+			Session emailSession = Session.getDefaultInstance(properties);			
+		
 			// create the POP3 store object and connect with the pop server
 			Store store = emailSession.getStore("pop3s");
 
@@ -54,12 +61,10 @@ public class EmailMain {
 			
 			// retrieve the messages from the folder in an array and print it
 			Message[] messages = emailFolder.getMessages();
-			//System.out.println("messages.length---" + messages.length);
-
 
 
 			//verificar tipo de mensagem e transforma-la de mimemultipart para text
-			for (int i = 0, n = 10; i < n; i++) {
+			for (int i = 0, n = 50; i < n; i++) {
 				Message message = messages[i];
 
 				if (message.isMimeType("text/plain")){
@@ -76,29 +81,16 @@ public class EmailMain {
 							result = result + "\n" + bodyPart.getContent();
 							if(result.contains(EmailFrame.textField.getText()) || message.getFrom().toString().contains(EmailFrame.textField.getText())
 									|| message.getSubject().contains(EmailFrame.textField.getText())) {
-								info.add(message.getSubject() + " " + message.getFrom()[0] + " " + result);
-								//info.add(message.getSubject() + " " + message.getFrom()[0] + " " + result);
-
+								info.add(message.getSentDate() + " " + message.getSubject() + " " + message.getFrom()[0] + " " + result);
+								
 								break;  //aparecem mensagens duplicadas sem o break
 							} else if (bodyPart.isMimeType("text/html")){
 								String html = (String) bodyPart.getContent();
 								result = result + "\n" + Jsoup.parse(html).text();
-								info.add(message.getSubject() + " " + message.getFrom()[0] + " " + result);
-
+								info.add(message.getSentDate() + " " + message.getSubject() + " " + message.getFrom()[0] + " " + result);
 							}
-							//System.out.println("---------------------------------");
-							//System.out.println("Email Number " + (i + 1));
-							//System.out.println("Subject: " + message.getSubject());
-							//System.out.println("From: " + message.getFrom()[0]);
-							//System.out.println("Text: " + message.getContent().toString());
-							//info.add(message.getSubject() + " " + message.getFrom()[0]);
-							//info.add(message.getSentDate().toString());
-							//info.add(message.getContent().toString());
-							//System.out.println(info + "LISTA AQUI");
-
 						}
 					}
-
 				}
 			}
 
@@ -119,6 +111,9 @@ public class EmailMain {
 
 
 
+	/**
+	 * Classe usada para a autenticação do email.
+	 */
 	public static void authenticate() {
 
 		String host = "outlook.office365.com";// change accordingly
@@ -128,6 +123,12 @@ public class EmailMain {
 		getMail(host, mailStoreType, username, password);
 	}
 	
+	/**
+	 * @param destinatario
+	 * @param assunto
+	 * @param texto
+	 * Função usada para o envio de email para o destinatário, o assunto e o texto fornecido à 'interface'.
+	 */
 	public static void enviarMail(String destinatario, String assunto, String texto) {
 
 

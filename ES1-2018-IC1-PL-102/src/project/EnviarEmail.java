@@ -1,3 +1,6 @@
+/*
+ * Classe usada para a criação e uso de todos os componentes da interface relativa ao envio de e-mail
+ */
 package project;
 
 import java.awt.BorderLayout;
@@ -28,7 +31,7 @@ public class EnviarEmail extends JFrame {
 	public static JFrame frame;
 
 	/**
-	 * Launch the application.
+	 * Main usado para inicializar a frame.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,12 +50,12 @@ public class EnviarEmail extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Criação da frame com os critérios que o grupo achou mais adequado.
 	 */
 	public EnviarEmail() {
 		
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 290, 299);
 		
 		contentPane = new JPanel();

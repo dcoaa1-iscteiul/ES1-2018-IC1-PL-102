@@ -1,20 +1,17 @@
+/*
+ * Classe usada para criar todos os componentes do menu principal.
+ */
 package project;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
@@ -27,27 +24,6 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame frame;
-	
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
-					Dimension dimensao = new Dimension(450,400);
-					frame.setPreferredSize(dimensao);
-					frame.pack();
-					frame.setResizable(false);
-					frame.setTitle("Menu Principal");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 	/**
 	 * Create the frame.

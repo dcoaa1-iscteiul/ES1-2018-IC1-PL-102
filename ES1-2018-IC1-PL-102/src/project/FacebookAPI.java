@@ -1,3 +1,6 @@
+/*
+ * Classe usada para tratar da informação do Facebook.
+ */
 package project;
 
 import java.util.ArrayList;
@@ -20,6 +23,10 @@ public class FacebookAPI {
 
 	public static List<String> info = new ArrayList<String>();
 	
+	/**
+	 * @param search
+	 * Função que recebe o texto que o utilizador pretende pesquisar e filtra os posts que apareceram na janela.
+	 */
 	public static void search(String search) {
 		info.clear();
 		System.out.println(search);
@@ -40,15 +47,18 @@ public class FacebookAPI {
 		Connection<Post> result = fbClient5.fetchConnection("me/feed",Post.class);
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
-				// Filters only posts that contain the word "Inform"
 				if (aPost.getMessage() != null && aPost.getMessage().contains(search)) {
-					info.add(aPost.getMessage().toString());
+					info.add(aPost.getCreatedTime() + aPost.getMessage());
 					FacebookFrame.info2JList();
 				}
 			}
 		}	
 	}
 
+	/**
+	 * @param post
+	 * Função que recebe o texto inserido pelo utilizador para publicar no facebook.
+	 */
 	public static void post(String post) {
 		
 		String grp = "";
@@ -66,6 +76,11 @@ public class FacebookAPI {
 		fbClient.publish(grp+"/feed", FacebookType.class, Parameter.with("message", post));
 		JOptionPane.showMessageDialog(FacebookFrame.frame, "Post feito!");
 	}
+	
+	/**
+	 * @return
+	 * Função para obtenção da lista com as mensagens a aparecer na interface.
+	 */
 	public static List<String> getInfo() {
 		return info;
 	}
